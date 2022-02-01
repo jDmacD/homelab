@@ -111,7 +111,7 @@ Job definitions are written in [HCL2](https://www.nomadproject.io/docs/job-speci
 
 There is a built in management web UI, which isn't going to win any beauty contests, but is akin to Portainer or the stock Kubernetes dashboard.
 
-![](./nomad_home.PNG) ![](./nomad_octoprint.PNG)
+![](./images/nomad_home.PNG) ![](./images/nomad_octoprint.PNG)
 
 Compared to Kubernetes and Swarm, Nomad Clusters are a looser organization of individual hosts. Out of the box, there is no networking layer that is a prominent part of Docker orchestrators. There are pros and cons with this. There isn't the "inside the cluster" vs "outside the cluster" distinction. Swarm and Kubernetes networks provide an extra layer of security for limiting access to containers, you dont have to totally nail down access to a containerized database for example.
 
@@ -197,7 +197,7 @@ Consul follows a similar architecture to Nomad
 
 As well as host location, health checks can be registered for a particular service. If the service checks fails Consul flags it in the catalog and a DNS query will return `NXDOMAIN`.
 
-![](./consul_plex.PNG)
+![](./images/consul_plex.PNG)
 
 On any host running Consul a service definition file can be dropped into `/etc/consul.d/`. The local agent will communicate this to the rest of the cluster.
 
@@ -248,11 +248,11 @@ If you are using Nomad (or Kubernetes) to manage workloads, service registration
 
 Consul can be used as a Service Discovery Backend for [Traefik](https://doc.traefik.io/traefik/v2.1/routing/providers/consul-catalog/) that can be controlled through the use of tags, the same as Docker
 
-![](./traefik_sd.PNG)
+![](./images/traefik_sd.PNG)
 
 This is also true for [Promethues](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#consul_sd_config)
 
-![](./prometheus_sd.PNG)
+![](./images/prometheus_sd.PNG)
 
 But wait! Consul has other tricks up its sleave. The [Key Value Store](https://www.consul.io/docs/dynamic-app-config/kv), which is endlessly useful in conjunction with Nomad and Ansible. Access to services can be controlled through the use of [intentions](https://www.consul.io/docs/connect/intentions), this is Access Control decoupled from the host. The [Connect Service Mesh](https://www.consul.io/docs/connect) is similar to the Docker networking / routing mesh. This can be used on its own or coupled with Nomad or Kubernetes, and has first class support for [Envoy](https://www.envoyproxy.io/).
 
@@ -322,7 +322,7 @@ Traefik uses Consul for service discovery and to configure routing rules for all
 
 There are two Traefik "Lanes" configured.
 
-![](./traefik_lanes.PNG)
+![](./images/traefik_lanes.PNG)
 
 The internal `routing` lane, and an `ingress` lane for requests from the public internet. This configuration is mostly a consequence of having a domestic router. But it does have the benefit of preventing services accidentally leaking onto the internet due to misconfiguration.
 
@@ -431,11 +431,11 @@ So I have all this infrastructure, workload orchestration, service discovery, ro
 
 Its main function is stil a media aggregation, organization and Video on Demand platform. It's come a long way from a Pi running Kodi hanging off the back of the tv. Currently I have about 4tb of Scifi that streams straight to the Chromecast, or any other point on the planet that has an internet connection.
 
-![](./plex.PNG)
+![](./images/plex.PNG)
 
 More importantly, it's an actual home laboratory and extended development environment. Any new piece of cool software I stumble on I can generally have up and running in 10 minutes.
 
-![](./dashboard.PNG)
+![](./images/dashboard.PNG)
 
 ## Whats Next
 
